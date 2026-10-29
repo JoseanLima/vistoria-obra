@@ -1,0 +1,147 @@
+/* Layout pensado primeiro para celular; telas maiores só ganham mais espaço */
+:root {
+  --fundo: #f3f4f6;
+  --cartao: #ffffff;
+  --texto: #1f2937;
+  --texto-suave: #6b7280;
+  --borda: #d1d5db;
+  --primaria: #c2410c;
+  --primaria-escura: #9a3412;
+  --ok: #15803d;
+  --nok: #b91c1c;
+  --obs: #a16207;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--fundo);
+  color: var(--texto);
+  line-height: 1.5;
+}
+
+.topo {
+  background: var(--primaria);
+  color: #fff;
+  padding: 1.25rem 1rem;
+  text-align: center;
+}
+.topo h1 { margin: 0; font-size: 1.6rem; }
+.topo p { margin: 0.25rem 0 0; opacity: 0.9; }
+
+main {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 1rem;
+  display: grid;
+  gap: 1rem;
+}
+
+.cartao {
+  background: var(--cartao);
+  border-radius: 12px;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 0.08);
+}
+.cartao h2 { margin-top: 0; font-size: 1.2rem; }
+
+form { display: grid; gap: 0.35rem; }
+
+label { font-weight: 600; margin-top: 0.6rem; }
+
+input[type="text"],
+select,
+textarea {
+  width: 100%;
+  padding: 0.7rem;
+  font-size: 1rem; /* 16px evita zoom automático no iPhone */
+  border: 1px solid var(--borda);
+  border-radius: 8px;
+  font-family: inherit;
+}
+input[type="file"] { font-size: 0.95rem; }
+
+input:focus, select:focus, textarea:focus, button:focus-visible {
+  outline: 3px solid #fdba74;
+  outline-offset: 1px;
+}
+
+.botao-principal {
+  margin-top: 1rem;
+  padding: 0.9rem;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: #fff;
+  background: var(--primaria);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+.botao-principal:hover { background: var(--primaria-escura); }
+
+.mensagem { min-height: 1.5em; margin: 0.5rem 0 0; font-weight: 600; }
+.mensagem.sucesso { color: var(--ok); }
+.mensagem.erro { color: var(--nok); }
+
+/* Miniaturas das fotos antes de salvar */
+.previa { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.previa figure { position: relative; margin: 0; }
+.previa img {
+  width: 90px; height: 90px; object-fit: cover;
+  border-radius: 8px; border: 1px solid var(--borda);
+}
+.botao-remover-foto {
+  position: absolute; top: -8px; right: -8px;
+  width: 26px; height: 26px; border-radius: 50%;
+  border: none; background: var(--nok); color: #fff;
+  font-size: 1rem; line-height: 1; cursor: pointer;
+}
+
+.contador { color: var(--texto-suave); font-weight: 400; font-size: 1rem; }
+
+.lista { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.vazio { color: var(--texto-suave); }
+
+.inspecao {
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  padding: 0.75rem;
+}
+.inspecao h3 { margin: 0 0 0.25rem; font-size: 1.05rem; }
+.inspecao p { margin: 0.35rem 0; }
+.inspecao time { color: var(--texto-suave); font-size: 0.9rem; margin-left: 0.5rem; }
+
+.selo {
+  display: inline-block;
+  padding: 0.1rem 0.6rem;
+  border-radius: 999px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: #fff;
+}
+.selo.ok { background: var(--ok); }
+.selo.nok { background: var(--nok); }
+.selo.obs { background: var(--obs); }
+
+.fotos-inspecao { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.4rem; margin-top: 0.5rem; }
+.fotos-inspecao img { width: 100%; aspect-ratio: 1; object-fit: cover; border-radius: 6px; }
+
+.botao-excluir {
+  margin-top: 0.6rem;
+  padding: 0.4rem 0.8rem;
+  background: transparent;
+  color: var(--nok);
+  border: 1px solid var(--nok);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.rodape { text-align: center; color: var(--texto-suave); font-size: 0.85rem; padding: 1rem; }
+
+@media (min-width: 640px) {
+  main { padding: 1.5rem; }
+  .cartao { padding: 1.5rem; }
+  .previa img { width: 110px; height: 110px; }
+}
