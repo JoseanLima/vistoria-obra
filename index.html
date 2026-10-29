@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Vistoria de Obra</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topo">
+    <h1>Vistoria de Obra</h1>
+    <p>Registre inspeções de campo com fotos, direto do celular.</p>
+  </header>
+
+  <main>
+    <section class="cartao" aria-labelledby="titulo-form">
+      <h2 id="titulo-form">Nova inspeção</h2>
+
+      <form id="form-inspecao" novalidate>
+        <label for="local">Local / frente de serviço *</label>
+        <input id="local" name="local" type="text" maxlength="80"
+               placeholder="Ex.: Tanque TQ-01, base norte" autocomplete="off">
+
+        <label for="item">Item inspecionado</label>
+        <input id="item" name="item" type="text" maxlength="80"
+               placeholder="Ex.: Solda da chapa do costado" autocomplete="off">
+
+        <label for="situacao">Situação</label>
+        <select id="situacao" name="situacao">
+          <option>Conforme</option>
+          <option>Não conforme</option>
+          <option>Observação</option>
+        </select>
+
+        <label for="observacoes">Observações</label>
+        <textarea id="observacoes" name="observacoes" rows="3" maxlength="500"
+                  placeholder="Descreva o que foi verificado"></textarea>
+
+        <label for="fotos">Fotos (até 3): tire na hora ou escolha da galeria</label>
+        <input id="fotos" name="fotos" type="file" accept="image/*" multiple>
+        <div id="previa-fotos" class="previa" aria-live="polite"></div>
+
+        <button type="submit" class="botao-principal">Salvar inspeção</button>
+        <p id="mensagem" class="mensagem" role="status" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="cartao" aria-labelledby="titulo-lista">
+      <h2 id="titulo-lista">Inspeções registradas <span id="contador" class="contador"></span></h2>
+      <ul id="lista-inspecoes" class="lista"></ul>
+    </section>
+  </main>
+
+  <footer class="rodape">
+    <p>Os dados ficam salvos apenas neste navegador (localStorage).</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
